@@ -1,2 +1,2 @@
-# FlaskProje(Arin Yazılım)
+# FlaskProje
 https://www.youtube.com/playlist?list=PL-Hkw4CrSVq9Y_RP7Q9Kn-bgZvVdl1cBy; ders serisi takip edilerek hazırlanmıştır.
