@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+ <!-- Page Header-->
+ <header class="masthead" style='background-image: url("{{ url_for('static',filename='img/post-bg.jpg') }}")'>
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>Giriş Yap</h1>
+                    <span class="subheading">İlgi duyduğun konuları takip et ve yazılar yaz.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+
+                {% with message = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }} <!-- güvenlik amacıyla-->
+
+                        <div class="form-floating">
+                            {{ form.email(placeholder='Email', class='form-control') }}
+                            <label for="email">Email</label>
+                            <div class="invalid-feedback" data-sb-feedback="email:required">Email gerekli</div>
+                            <div class="invalid-feedback" data-sb-feedback="email:email">Email geçerli değil</div>
+                        </div>
+                        <div class="form-floating">
+                            {{ form.password(placeholder='Password', class='form-control') }}
+                            <label for="phone">Şifre</label>
+                            <div class="invalid-feedback" data-sb-feedback="phone:required">Telefon numarası gerekli</div>
+                        </div>
+
+                        <br />
+                        <!-- Submit success message-->
+                        <!---->
+                        <!-- This is what your users will see when the form-->
+                        <!-- has successfully submitted-->
+                        <div class="d-none" id="submitSuccessMessage">
+                            <div class="text-center mb-3">
+                                <div class="fw-bolder">Giriş başarılı</div>
+                                Kayıt olmak için:
+                                <br />
+                                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                            </div>
+                        </div>
+                        <!-- Submit error message-->
+                        <!---->
+                        <!-- This is what your users will see when there is-->
+                        <!-- an error submitting the form-->
+                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Mesaj gönderilken hata oluştu!</div></div>
+                        <!-- Submit Button-->
+                        {{ form.submit( class='btn-primary') }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+       
+{% endblock %}
